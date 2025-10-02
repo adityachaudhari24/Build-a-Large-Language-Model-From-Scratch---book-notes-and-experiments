@@ -38,6 +38,38 @@ to learn from data and perform tasks that typically require human intelligence.�
 ![alt text](image.png)
 </details>
 
+<details>
+<summary>🎯Q. Stages of buiding and using the LLMs </summary>
+
+- The general process of creating an LLM includes `pretraining` and `fine-tuning`.
+- 🎯traditional machine learning vs pretraining and fine-tuning of LLMs🎯:
+  - In traditional `machine learning`, it uses `supervised learning`, where models are trained from scratch on a single, specific task using labeled data.
+  - In `pretraning` an LLM large `self-supervised` learning is used, where the model learns general language patterns from massive amounts of unlabeled text data. 
+  - In `fine-tuning` the LLMs it uses the `supervised learning on smaller, labeled datasets to adapt the model for specific tasks`.
+
+  - The two most popular categories of fine-tuning LLMs are `instruction fine-tuning` and `classification fine-tuning`.
+    - In `instruction fine-tuning`, the labeled dataset consists of instruction and answer pairs, such as a query to translate a text accompanied by the correctly translated text. 
+    - In `classification fine-tuning`, the labeled dataset consists of texts and associated class labels—for example, emails associated with “spam” an“not spam” labels.
+</details>
+
+
+<details>
+<summary>🎯Q. Transformer architecture - key notes</summary>
+</details>
+
+<br>
+<br>
+<br><br>
+<br>
+<br><br>
+<br>
+<br>
+⭐⭐⭐ GENERAL NOTES ⭐⭐⭐
+- Research has shown that when it comes to modeling performance, custom-built
+LLMs—those tailored for specific tasks or domains—can outperform general-purpose
+LLMs, such as those provided by ChatGPT or GPT-4. This is because custom models can be fine-tuned to better understand the nuances and specific requirements of a given task, leading to improved accuracy and effectiveness.
+
+-
 
 <br>
 <br>
