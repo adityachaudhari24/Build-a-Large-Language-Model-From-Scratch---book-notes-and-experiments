@@ -1,6 +1,7 @@
 # Build-a-Large-Language-Model-From-Scratch---book-notes-and-experiments
 The models you’ll create are smaller in scale compared to the large foundational models; they use the same concepts and serve as powerful educational tools to grasp the core mechanisms and techniques used in building state-of-the-art LLMs.
 
+#### Majority of the content in this repo is from the book "Build a Large Language Model from Scratch" by Sebastian Raschka. All credits to the author for the amazing work. Some text is directly copied from the book for and some is tuned for my better understanding.
 
 # Chapter 1: understanding the large language models
 <details>
@@ -55,6 +56,18 @@ to learn from data and perform tasks that typically require human intelligence.�
 
 <details>
 <summary>🎯Q. Transformer architecture - key notes</summary>
+
+- Most modern LLMs rely on the transformer architecture, which is a deep neural network architecture introduced in the 2017 paper “Attention Is All You Need”
+- To understand LLMs, we must understand the original transformer, which was developed for machine translation, translating English texts to German and French.
+- There are key two steps in the transformer architecture:
+  1. The `encoder` processes the input text and creates a numerical representation of it (Embeddings) which capture the contextual information of the input.
+  2. The `decoder` takes this representation initially convert literally word by word  and then goes through self-attention and then generates the final output text.
+- This image is simple initial depiction however many things goes inside which autor is about to explain in the next chapters.
+![alt text](image-1.png)
+
+- After this paper on this concept other variants transformer emerged and become backbone of many LLMs. Like BERT (short for bidirectional
+encoder representations from transformers) and the various GPT models (short for genera-
+tive pretrained transformers)
 </details>
 
 <br>
