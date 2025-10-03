@@ -50,14 +50,14 @@ to learn from data and perform tasks that typically require human intelligence.�
 
   - The two most popular categories of fine-tuning LLMs are `instruction fine-tuning` and `classification fine-tuning`.
     - In `instruction fine-tuning`, the labeled dataset consists of instruction and answer pairs, such as a query to translate a text accompanied by the correctly translated text. 
-    - In `classification fine-tuning`, the labeled dataset consists of texts and associated class labels—for example, emails associated with “spam” an“not spam” labels.
+    - In `classification fine-tuning`, the labeled dataset consists of texts and associated class labels—for example, emails associated with “spam” or “not spam” labels.
 </details>
 
 
 <details>
 <summary>🎯Q. Transformer architecture - key notes</summary>
 
-- Most modern LLMs rely on the transformer architecture, which is a deep neural network architecture introduced in the 2017 paper “Attention Is All You Need”
+- Most modern LLMs rely on the transformer architecture, which is a 💡`deep neural network architecture`💡 introduced in the 2017 paper “Attention Is All You Need”
 - To understand LLMs, we must understand the original transformer, which was developed for machine translation, translating English texts to German and French.
 - There are key two steps in the transformer architecture:
   1. The `encoder` processes the input text and creates a numerical representation of it (Embeddings) which capture the contextual information of the input.
@@ -66,9 +66,39 @@ to learn from data and perform tasks that typically require human intelligence.�
 ![alt text](image-1.png)
 
 - After this paper on this concept other variants transformer emerged and become backbone of many LLMs. Like BERT (short for bidirectional
-encoder representations from transformers) and the various GPT models (short for genera-
-tive pretrained transformers)
+encoder representations from transformers) and the various GPT models (short for generative pretrained transformers)
 </details>
+
+<details>
+<summary>🎯Q. A closer look at the GPT architecture</summary>
+
+- GPT was originally introduced in the paper “Improving Language Understanding by Generative Pre-Training” in 2018 by Alec Radford and colleagues at OpenAI.
+- The model is simply trained to preduct the next --> word in a sequence of words.
+- Compared to the original transformer architecture we covered in section 1.4, the general GPT architecture is relatively simple. Essentially, it’s just the decoder part without the encoder.
+- Since decoder-style models like GPT generate text by predicting text one word at a time, they are considered a type of `autoregressive model`.
+- `Autoregressive models` incorporate their previous outputs as inputs for future predictions.
+- The ability to perform tasks that the model wasn’t explicitly trained to perform is called an `emergent behavior`. This capability isn’t explicitly taught during training but emerges as a natural consequence of the model’s exposure to vast quantities of multilingual data in diverse contexts.
+
+</details>
+
+
+<details>
+<summary>🎯Q. Building a large language model - stages (section 1.7)</summary>
+
+- GPT was originally introduced in the paper “Improving Language Understanding by Generative Pre-Training” in 2018 by Alec Radford and colleagues at OpenAI.
+- The model is simply trained to preduct the next --> word in a sequence of words.
+- Compared to the original transformer architecture we covered in section 1.4, the general GPT architecture is relatively simple. Essentially, it’s just the decoder part without the encoder.
+- Since decoder-style models like GPT generate text by predicting text one word at a time, they are considered a type of `autoregressive model`.
+- `Autoregressive models` incorporate their previous outputs as inputs for future predictions.
+- The ability to perform tasks that the model wasn’t explicitly trained to perform is called an `emergent behavior`. This capability isn’t explicitly taught during training but emerges as a natural consequence of the model’s exposure to vast quantities of multilingual data in diverse contexts.
+
+- ![alt text](image-2.png)
+</details>
+
+
+
+# Chapter 2: working with text data
+
 
 <br>
 <br>
@@ -78,11 +108,33 @@ tive pretrained transformers)
 <br>
 <br>
 ⭐⭐⭐ GENERAL NOTES ⭐⭐⭐
+
 - Research has shown that when it comes to modeling performance, custom-built
 LLMs—those tailored for specific tasks or domains—can outperform general-purpose
 LLMs, such as those provided by ChatGPT or GPT-4. This is because custom models can be fine-tuned to better understand the nuances and specific requirements of a given task, leading to improved accuracy and effectiveness.
 
--
+
+
+# Maths concepts for AI,ML and DL
+
+</details>
+
+
+<details>
+<summary>🎯Q. what is tensor?</summary>
+
+- Tensors represent a mathematical concept that generalizes vectors and matrices to
+potentially higher dimensions.
+- From a computational perspective, tensors serve as data containers. For instance, they
+hold multidimensional data, where each dimension represents a different feature.
+Tensor libraries like PyTorch can create, manipulate, and compute with these arrays
+efficiently. In this context, a tensor library functions as an array library.
+- PyTorch tensors are similar to NumPy arrays but have several additional features
+that are important for deep learning. For example, PyTorch adds an automatic differentiation engine,simplifying computing gradients (see section A.4). PyTorch tensors also support GPU computations to speed up deep neural network training.
+- ![alt text](image-4.png)
+- ![alt text](image-3.png)
+- ref : https://www.kdnuggets.com/2018/05/wtf-tensor.html
+</details>
 
 <br>
 <br>
