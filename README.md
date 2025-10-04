@@ -3,6 +3,10 @@ The models you’ll create are smaller in scale compared to the large foundation
 
 #### Majority of the content in this repo is from the book "Build a Large Language Model from Scratch" by Sebastian Raschka. All credits to the author for the amazing work. Some text is directly copied from the book for and some is tuned for my better understanding.
 
+#### executing below steps in the book
+![alt text](image-6.png)
+
+
 # Chapter 1: understanding the large language models
 <details>
 <summary>🎯Q. LLMs vs earlier NLP </summary>
@@ -22,9 +26,7 @@ The models you’ll create are smaller in scale compared to the large foundation
 <summary>🎯Q. What is an LLM </summary>
 
 - An LLM is a neural network designed to understand, generate, and respond to human-like text.
-- Models like this often have
-tens or even hundreds of billions of parameters, which are the adjustable weights in
-the network that are optimized during training to predict the next word in a sequence.
+- Models like this often have tens or even hundreds of billions of parameters, which are the adjustable weights in the network that are optimized during training to predict the next word in a sequence.
 - The “large” in “large language model” refers to both the model’s size in terms of parameters and the immense dataset on which it’s trained.
 - Think of `parameters` as the number of knobs you can turn to adjust the model's behavior, and training data is like the vast library of books and articles the model reads to learn language patterns. 
 
@@ -123,16 +125,15 @@ LLMs, such as those provided by ChatGPT or GPT-4. This is because custom models 
 <details>
 <summary>🎯Q. what is tensor?</summary>
 
-- Tensors represent a mathematical concept that generalizes vectors and matrices to
-potentially higher dimensions.
-- From a computational perspective, tensors serve as data containers. For instance, they
-hold multidimensional data, where each dimension represents a different feature.
-Tensor libraries like PyTorch can create, manipulate, and compute with these arrays
-efficiently. In this context, a tensor library functions as an array library.
-- PyTorch tensors are similar to NumPy arrays but have several additional features
-that are important for deep learning. For example, PyTorch adds an automatic differentiation engine,simplifying computing gradients (see section A.4). PyTorch tensors also support GPU computations to speed up deep neural network training.
+- Tensors represent a mathematical concept that generalizes vectors and matrices to potentially higher dimensions.
+- In other words, tensors are mathematical objects that can be characterized by their order (or rank), which provides the number of dimensions. For example, a scalar (just a number) is a tensor of rank 0, a vector is a tensor of rank 1, and a matrix is a tensor of rank 2
+- 🔥From a computational perspective, tensors serve as `data containers`🔥. For instance, they hold multidimensional data, where 🔥each dimension represents a different feature🔥.
+- Tensor libraries like `PyTorch` can create, manipulate, and compute with these arrays efficiently. In this context, `a tensor library functions as an array library`.
+- PyTorch tensors are similar to NumPy arrays but have several additional features that are important for deep learning.
 - ![alt text](image-4.png)
 - ![alt text](image-3.png)
+- ![alt text](image-5.png)
+
 - ref : https://www.kdnuggets.com/2018/05/wtf-tensor.html
 </details>
 
@@ -151,7 +152,7 @@ that are important for deep learning. For example, PyTorch adds an automatic dif
 <details>
 <summary>Emojis used</summary>
 ⭐ - For important points
-🔥 - For hot/important exam topics
+🔥 - super important
 💡 - For key concepts/tips
 ⚠️ - For warnings/common mistake
 🎯 - For exam targets/focus areas/ question 
