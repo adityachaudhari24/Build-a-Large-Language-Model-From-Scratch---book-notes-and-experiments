@@ -101,6 +101,48 @@ encoder representations from transformers) and the various GPT models (short for
 
 # Chapter 2: working with text data
 
+<details>
+<summary>🎯Q. understanding embeddings</summary>
+
+- The concept of converting data into a vector format is often referred to as embedding.
+- It’s important to note that different data formats require distinct embedding models. For example, an embedding model designed for text would not be suitable for embedding audio or video data.
+- ⭐The primary purpose of embeddings is to convert nonnumeric data into a format that neural networks can process.⭐
+
+</details>
+
+<details>
+<summary>🎯Q. Key steps in data preparation which includes embeddings - IMPORTANT</summary>
+
+- All the steps along with test code is mentiond under @chp_02_embeddings/embeddings.ipynb file. Please have a look.
+- Below is the summary of the steps.
+  1. `Tokenization` - breaking down text into smaller units called tokens.
+  2. `Token IDs` - converting tokens into numerical representations called token IDs.
+  3. `Token Embeddings` - transforming token IDs into dense vectors using an embedding layer.
+  4. `Positional Embeddings` - adding positional information to token embeddings to capture word order.
+  5. `Input Embeddings` - combining `token embeddings` and `positional embeddings` to create input embeddings for the model.
+  6. Finally this input embeddings are fed into the transformer model for further processing. (Chp 3 onwards)
+
+</details>
+
+
+
+
+#### Questions which needs a deep dive
+
+<details>
+<summary>🎯Q. If parameters in any model store the knnowledge can we see each parameter on which knowledge they have stored?</summary>
+
+- This is integpretability challenge, one of the biggest open problems in AI research (Rudin, 2019; Castelvecchi, 2016)
+- TODO - do understand and go deep.
+</details>
+
+<details>
+<summary>🎯Q. Why positional encoding is needed even after token IDs encodings into vectors? chp 2 section 2.8 </summary>
+
+- TODO
+</details>
+
+
 
 <br>
 <br>
@@ -114,6 +156,19 @@ encoder representations from transformers) and the various GPT models (short for
 - Research has shown that when it comes to modeling performance, custom-built
 LLMs—those tailored for specific tasks or domains—can outperform general-purpose
 LLMs, such as those provided by ChatGPT or GPT-4. This is because custom models can be fine-tuned to better understand the nuances and specific requirements of a given task, leading to improved accuracy and effectiveness.
+
+<details>
+<summary>🎯Q. Explain back-propogation in super simple terms ?</summary>
+
+- The backpropagation algorithm is a method used to train neural networks. It helps the network learn from its mistakes and improve its predictions over time. Here’s a simple breakdown of how it works:
+
+1. `Prediction`: The neural network makes a guess (output) based on the input data.
+2. `Error Calculation`: The network checks how wrong its guess was by comparing it to the correct answer (using a loss function).
+3. `Blame Assignment`: Backpropagation works backward through the network, figuring out which parts (neurons/weights) contributed most to the error.
+4. `Adjustment`: The network adjusts its weights (parameters) slightly to reduce the error for the next prediction. This is done using a method called `gradient descent`.
+5. `Repeat`: This process repeats many times, improving the network's predictions step by step.
+
+</details>
 
 
 
