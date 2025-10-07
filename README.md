@@ -1,7 +1,7 @@
 # Build-a-Large-Language-Model-From-Scratch---book-notes-and-experiments
 The models you’ll create are smaller in scale compared to the large foundational models; they use the same concepts and serve as powerful educational tools to grasp the core mechanisms and techniques used in building state-of-the-art LLMs.
 
-#### Majority of the content in this repo is from the book "Build a Large Language Model from Scratch" by Sebastian Raschka. All credits to the author for the amazing work. Some text is directly copied from the book for and some is tuned for my better understanding.
+#### Majority of the content in this repo is from the book "Build a Large Language Model from Scratch" by Sebastian Raschka. All credits to the author for the amazing work. Some text is directly copied from the book and some is tuned for understanding concept better.
 
 #### executing below steps in the book
 ![alt text](image-6.png)
@@ -9,16 +9,13 @@ The models you’ll create are smaller in scale compared to the large foundation
 
 # Chapter 1: understanding the large language models
 <details>
-<summary>🎯Q. LLMs vs earlier NLP </summary>
+<summary>🎯Q. LLMs vs Earlier NLP</summary>
 
-- An LLM is a specific type of model within the broader field of NLP.
+- **LLMs** are transformer-based deep models trained on massive text corpora, delivering broad, context-aware language abilities. However, their "understanding" refers to producing coherent, relevant text—not human-level consciousness.
+- Unlike earlier NLP models, which relied on handcrafted rules or simpler models for narrow tasks (e.g., spam detection, translation), LLMs are versatile and excel at complex understanding and generation.
+- Earlier models focused on categorization and pattern recognition but struggled with nuanced tasks. LLMs, powered by `transformers and vast datasets, represent a paradigm shift in NLP`, making it more capable and flexible.
 
-- LLMs are transformer-based deep models trained on massive text corpora that deliver broad, context-aware language abilities far beyond earlier task-specific or rule-based NLP systems — though “understand” here means producing coherent, contextually relevant text, not human-level consciousness.
-
-- Large language models (LLMs), built on deep neural networks and powered by the transformer architecture, represent a major shift in natural language processing (NLP). Unlike earlier NLP approaches, which relied on handcrafted rules or simpler models tailored to narrow tasks like spam detection or translation, LLMs are trained on vast amounts of text data.
-
-- While earlier NLP models excelled at categorization and pattern recognition, they struggled with complex understanding and generation. LLMs, by contrast, demonstrate remarkable versatility, though their “understanding” refers to producing text that appears meaningful and relevant.
-⭐This paradigm shift—driven by transformers and massive datasets—has fundamentally transformed NLP into a far more capable and flexible field.⭐
+⭐ **Key Takeaway**: Transformers and massive datasets have fundamentally transformed NLP. ⭐
 </details>
 
 
@@ -28,7 +25,7 @@ The models you’ll create are smaller in scale compared to the large foundation
 - An LLM is a neural network designed to understand, generate, and respond to human-like text.
 - Models like this often have tens or even hundreds of billions of parameters, which are the adjustable weights in the network that are optimized during training to predict the next word in a sequence.
 - The “large” in “large language model” refers to both the model’s size in terms of parameters and the immense dataset on which it’s trained.
-- Think of `parameters` as the number of knobs you can turn to adjust the model's behavior, and training data is like the vast library of books and articles the model reads to learn language patterns. 
+- Think of `parameters` as the number of knobs you can turn to adjust the model's behavior, and `training data` is like the vast library of books and articles the model reads to learn language patterns. 
 
 - LLMs utilize an architecture called the `transformer`, which allows them to pay selective attention to different parts of the input when making predictions, making them
 especially adept at handling the nuances and complexities of human language.
@@ -63,7 +60,7 @@ to learn from data and perform tasks that typically require human intelligence.�
 - To understand LLMs, we must understand the original transformer, which was developed for machine translation, translating English texts to German and French.
 - There are key two steps in the transformer architecture:
   1. The `encoder` processes the input text and creates a numerical representation of it (Embeddings) which capture the contextual information of the input.
-  2. The `decoder` takes this representation initially convert literally word by word  and then goes through self-attention and then generates the final output text.
+  2. The `decoder` takes this representation initially convert literally word by word  and then goes through `self-attention` and then generates the final output text.
 - This image is simple initial depiction however many things goes inside which autor is about to explain in the next chapters.
 ![alt text](image-1.png)
 
@@ -87,13 +84,7 @@ encoder representations from transformers) and the various GPT models (short for
 <details>
 <summary>🎯Q. Building a large language model - stages (section 1.7)</summary>
 
-- GPT was originally introduced in the paper “Improving Language Understanding by Generative Pre-Training” in 2018 by Alec Radford and colleagues at OpenAI.
-- The model is simply trained to preduct the next --> word in a sequence of words.
-- Compared to the original transformer architecture we covered in section 1.4, the general GPT architecture is relatively simple. Essentially, it’s just the decoder part without the encoder.
-- Since decoder-style models like GPT generate text by predicting text one word at a time, they are considered a type of `autoregressive model`.
-- `Autoregressive models` incorporate their previous outputs as inputs for future predictions.
-- The ability to perform tasks that the model wasn’t explicitly trained to perform is called an `emergent behavior`. This capability isn’t explicitly taught during training but emerges as a natural consequence of the model’s exposure to vast quantities of multilingual data in diverse contexts.
-
+- from the book - "Build a Large Language Model from Scratch" by Sebastian Raschka
 - ![alt text](image-2.png)
 </details>
 
@@ -116,9 +107,19 @@ encoder representations from transformers) and the various GPT models (short for
 - All the steps along with test code is mentiond under @chp_02_embeddings/embeddings.ipynb file. Please have a look.
 - Below is the summary of the steps.
   1. `Tokenization` - breaking down text into smaller units called tokens.
+      - Example:
+          - Input: "The cat sat on the mat."
+          - Output Tokens: ["The", "cat", "sat", "on", "the", "mat", "."]
   2. `Token IDs` - converting tokens into numerical representations called token IDs.
-  3. `Token Embeddings` - transforming token IDs into dense vectors using an embedding layer.
-  4. `Positional Embeddings` - adding positional information to token embeddings to capture word order.
+      - Example:
+          - Tokens: ["The", "cat", "sat", "on", "the", "mat", "."]
+          - Token IDs: [101, 2009, 2021, 2006, 1996, 3007, 1012]
+  3. `Token Embeddings` - transforming token IDs `into dense vectors` using an embedding layer.
+      - Example:
+          - Token IDs: [101, 2009, 2021, 2006, 1996, 3007, 1012]
+          - Token Embeddings: [[0.1, 0.2, ...], [0.3, 0.4, ...], ..., [0.5, 0.6, ...]]
+  4. `Positional Embeddings` - adding 
+      - positional information to token embeddings to capture word order.
   5. `Input Embeddings` - combining `token embeddings` and `positional embeddings` to create input embeddings for the model.
   6. Finally this input embeddings are fed into the transformer model for further processing. (Chp 3 onwards)
 
@@ -201,6 +202,37 @@ LLMs, such as those provided by ChatGPT or GPT-4. This is because custom models 
 
 </details>
 
+<details>
+<summary>🎯Q. Difference between LLM vs foundation model ?</summary>
+
+- LLM is a type of foundation model specifically designed for natural language processing tasks. Foundation models are large-scale models trained on vast amounts of data that can be adapted to various tasks, including but not limited to language processing.
+- Foundation model servers as a base for the fine-tuning and adaptation to specific tasks, while LLMs are specialized versions of these models focused on understanding and generating human language.
+</summary>
+
+
+<details>
+<summary>🎯Q. Does attention mechanism and positional encoding complement each other ? how?</summary>
+
+
+- ![alt text](image-10.png)
+
+</summary>
+
+<details>
+<summary>🎯Q. How self-attention is different then positional encoding ?</summary>
+
+
+- The difference between self-attention and positional encoding lies in their roles:
+
+    - `Self-Attention`: Focuses on the relationships between tokens in a sequence, determining which tokens are most relevant to each other, regardless of their positions. It captures context dynamically.
+
+    - `Positional Encoding`: Provides information about the order of tokens in the sequence, ensuring the model understands the sequence structure since transformers process tokens in parallel.
+
+- In short, self-attention captures "what to focus on," while positional encoding provides "where in the sequence."
+- ![alt text](image-11.png)
+- ![alt text](image-12.png)
+
+</summary>
 
 
 # Maths concepts for AI,ML and DL
