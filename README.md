@@ -124,23 +124,54 @@ encoder representations from transformers) and the various GPT models (short for
 
 </details>
 
+<br>
+<br>
 
 
-
-#### Questions which needs a deep dive
+# Chapter 3: coding attention mechanisms.
 
 <details>
-<summary>🎯Q. If parameters in any model store the knnowledge can we see each parameter on which knowledge they have stored?</summary>
+<summary>🎯Q. why we need the attention mechanism in LLM ?</summary>
 
-- This is integpretability challenge, one of the biggest open problems in AI research (Rudin, 2019; Castelvecchi, 2016)
-- TODO - do understand and go deep.
+- The attention mechanism allows the model to focus on different parts of the input sequence when making predictions, rather than treating all parts equally.
+- This is especially important for handling long-range dependencies in text, where the meaning of a word can depend on words that are far apart in the sequence.
+- The attention mechanism helps the model to dynamically weigh the importance of different words in the input sequence based on their relevance to the current prediction task.
+- This allows the model to capture context more effectively and generate more coherent and contextually relevant text.
+- Example : Suppose we want to develop a language translation model that translates text from one language into another. As shown in figure below, we can’t simply translate a text word by word due to the grammatical structures in the source and target language.
+- ![alt text](image-7.png)
+- RNN (recurrent neural network) is usually used for this kind of tasks but it has its own limitations like vanishing gradient problem, long training times etc. To overcome these limitations attention mechanism is used.
+    - ![alt text](image-8.png)
+- ⭐ The big limitation of encoder–decoder RNNs is that the RNN can’t directly access earlier hidden states from the encoder during the decoding phase. Consequently, it relies solely on the current hidden state, which encapsulates all relevant information. This can lead to a loss of context, especially in complex sentences where dependencies might span long distances.⭐ 
+- Fortunately, it is not essential to understand RNNs to build an LLM. Just remember that encoder–decoder RNNs had a shortcoming that motivated the design of
+attention mechanisms.
+- Later, researchers discovered that RNNs were not essential for NLP deep neural networks and introduced the transformer architecture with self-attention, inspired by the Bahdanau attention mechanism.
+</details>
+
+
+<details>
+<summary>🎯Q. What is self attention mechanism actually ?</summary>
+
+- Self-attention is a mechanism that allows each position in the input sequence to consider the relevancy of, or “attend to,” all other positions in the same sequence when computing the representation of a sequence.
+- Self-attention is a key component of contemporary LLMs based on the transformer architecture, such as the GPT series.
+- The `self-attention mechanism` enables the model to weigh the importance of different words in a sequence relative to each other, allowing it to capture context and relationships more effectively.
+- In `self-attention`, the `“self”` refers to the mechanism’s ability to compute attention weights by relating different positions within a single input sequence.
+- It assesses and learns the relationships and dependencies between various parts of the input itself, such as words in a sentence or pixels in an image.
+- This is in contrast to traditional attention mechanisms, where the focus is on the relationships between elements of two different sequences.
+- ⭐⭐In the context of self-attention mechanisms, the dot product determines the extent to which each element in a sequence focuses on, or “attends to,” any other element: the higher the dot product, the higher the similarity and attention score between two elements.⭐⭐
 </details>
 
 <details>
-<summary>🎯Q. Why positional encoding is needed even after token IDs encodings into vectors? chp 2 section 2.8 </summary>
+<summary>🎯Q. 3 step process for self-attention ?</summary>
 
-- TODO
+- Its a 3 step process to calculate self attention
+  1. step 1 - compute unnormalized attention scores "w"
+  2. step 2 - normalize the unnormalized attention scores ("omegas","w") so that they sum up to 1
+  3. step 3 - compute the context vector by multiplying the embedded input tokens, with the attention weights and sum the resulting vectors.
+- All the steps along with test code is mentioned under @chp_03_self_attention_theory/self_attention.ipynb file. Please have a look. This is super interesting and the original author has explained it very well.
+- ![alt text](image-9.png)
+
 </details>
+
 
 
 
@@ -196,6 +227,23 @@ LLMs, such as those provided by ChatGPT or GPT-4. This is because custom models 
 <br>
 <br>
 <br>
+
+#### Questions which needs a deep dive
+
+<details>
+<summary>🎯Q. If parameters in any model store the knnowledge can we see each parameter on which knowledge they have stored?</summary>
+
+- This is integpretability challenge, one of the biggest open problems in AI research (Rudin, 2019; Castelvecchi, 2016)
+- TODO - do understand and go deep.
+</details>
+
+<details>
+<summary>🎯Q. Why positional encoding is needed even after token IDs encodings into vectors? chp 2 section 2.8 </summary>
+
+- TODO
+</details>
+
+
 <br>
 <br>
 <br>
