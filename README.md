@@ -199,7 +199,6 @@ LLMs, such as those provided by ChatGPT or GPT-4. This is because custom models 
 3. `Blame Assignment`: Backpropagation works backward through the network, figuring out which parts (neurons/weights) contributed most to the error.
 4. `Adjustment`: The network adjusts its weights (parameters) slightly to reduce the error for the next prediction. This is done using a method called `gradient descent`.
 5. `Repeat`: This process repeats many times, improving the network's predictions step by step.
-
 </details>
 
 <details>
@@ -207,20 +206,15 @@ LLMs, such as those provided by ChatGPT or GPT-4. This is because custom models 
 
 - LLM is a type of foundation model specifically designed for natural language processing tasks. Foundation models are large-scale models trained on vast amounts of data that can be adapted to various tasks, including but not limited to language processing.
 - Foundation model servers as a base for the fine-tuning and adaptation to specific tasks, while LLMs are specialized versions of these models focused on understanding and generating human language.
-</summary>
-
+</details>
 
 <details>
 <summary>🎯Q. Does attention mechanism and positional encoding complement each other ? how?</summary>
-
-
 - ![alt text](image-10.png)
-
-</summary>
+</details>
 
 <details>
 <summary>🎯Q. How self-attention is different then positional encoding ?</summary>
-
 
 - The difference between self-attention and positional encoding lies in their roles:
 
@@ -232,7 +226,7 @@ LLMs, such as those provided by ChatGPT or GPT-4. This is because custom models 
 - ![alt text](image-11.png)
 - ![alt text](image-12.png)
 
-</summary>
+</details>
 
 
 # Maths concepts for AI,ML and DL
