@@ -127,7 +127,7 @@ encoder representations from transformers) and the various GPT models (short for
 
 <br>
 <br>
-
+<br>
 
 # Chapter 3: coding attention mechanisms.
 
@@ -173,13 +173,41 @@ attention mechanisms.
 
 </details>
 
+<br>
+<br>
+<br>
+
+
+# Chapter 4: Implementing a GPT model from scratch to generate text
+![alt text](image-13.png)
+
+<details>
+<summary>🎯Q.what is the meaning of "parameter" in GPT like LLM ?</summary>
+
+- In the context of deep learning and LLMs like GPT, the term “parameters” refers to the trainable weights of the model. (weights is also a n-d array/tensor)
+- These weights are essentially the internal variables of the model that are adjusted and optimized during the training process to `minimize a specific loss function`. Meaning the model learns to make better predictions by adjusting these weights based on the input data and the expected output.
+- ![alt text](image-14.png)
+- ![alt text](image-15.png)
+
+- In a neural network, parameters include:
+  - `Weights`: These are the coefficients(a numerical or constant) that connect neurons in one layer to neurons in the next layer. They determine the strength and direction of the connection.
+  - `Biases`: These are additional parameters added to the weighted sum of inputs to a neuron before applying the activation function. They help the model learn patterns that do not pass through the origin. (activatoin function is like a threshold function)
+- The number of parameters in a model is often used as a measure of its complexity and capacity. Larger models with more parameters can potentially learn more complex patterns from data, but they also require more computational resources and data to train effectively.
+- In the context of LLMs like GPT, the number of parameters can range from millions to billions, depending on the size and architecture of the model.
+</details>
+
+<details>
+<summary>🎯Q.what is the transformer block ?</summary>
+
+- A transformer block is a fundamental `building unit of the transformer architecture`, which is widely used in natural language processing (NLP) tasks, including large language models (LLMs) like GPT.
+- A transformer block typically consists of two main components:
+  1. `Multi-Head Self-Attention Mechanism`: This component allows the model to focus on different parts of the input sequence when making predictions. It computes attention scores for each token in the sequence relative to all other tokens, enabling the model to capture context and relationships effectively.
+  2. `Feed-Forward Neural Network`: This component processes the output of the self-attention mechanism, applying a series of transformations to enhance the model's ability to learn complex patterns.
+- ![alt text](image-16.png)
+</details>
 
 
 
-<br>
-<br>
-<br><br>
-<br>
 <br><br>
 <br>
 <br>
@@ -228,6 +256,9 @@ LLMs, such as those provided by ChatGPT or GPT-4. This is because custom models 
 
 </details>
 
+<br>
+<br>
+<br>
 
 # Maths concepts for AI,ML and DL
 
@@ -252,7 +283,6 @@ LLMs, such as those provided by ChatGPT or GPT-4. This is because custom models 
 <br>
 <br>
 <br>
-<br>
 
 #### Questions which needs a deep dive
 
@@ -270,10 +300,7 @@ LLMs, such as those provided by ChatGPT or GPT-4. This is because custom models 
 </details>
 
 
-<br>
-<br>
-<br>
-<br>
+
 <br>
 <br>
 <br>
