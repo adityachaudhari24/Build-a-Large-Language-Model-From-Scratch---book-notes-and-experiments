@@ -11,18 +11,20 @@ The models you’ll create are smaller in scale compared to the large foundation
 <details>
 <summary>🎯Q. LLMs vs Earlier NLP</summary>
 
-- **LLMs** are transformer-based deep models trained on massive text corpora, delivering broad, context-aware language abilities. However, their "understanding" refers to producing coherent, relevant text—not human-level consciousness.
-- Unlike earlier NLP models, which relied on handcrafted rules or simpler models for narrow tasks (e.g., spam detection, translation), LLMs are versatile and excel at complex understanding and generation.
-- Earlier models focused on categorization and pattern recognition but struggled with nuanced tasks. LLMs, powered by `transformers and vast datasets, represent a paradigm shift in NLP`, making it more capable and flexible.
+- **LLMs (Large Language Models)** are transformer-based deep learning models trained on massive text datasets. They excel at generating context-aware, coherent text but lack human-level consciousness.
+- **Earlier NLP Models** relied on:
+  - Handcrafted rules or simpler algorithms for narrow tasks (e.g., spam detection, translation).
+  - Focused on pattern recognition and categorization but struggled with nuanced, complex tasks.
+- **Key Difference**: LLMs, powered by `transformers` and `large datasets`, represent a paradigm shift. They are versatile and capable of handling complex language understanding and generation tasks.
 
-⭐ **Key Takeaway**: Transformers and massive datasets have fundamentally transformed NLP. ⭐
+⭐ **Takeaway**: Transformers and massive datasets have revolutionized NLP, making it more flexible and powerful. ⭐
 </details>
 
 
 <details>
 <summary>🎯Q. What is an LLM </summary>
 
-- An LLM is a neural network designed to understand, generate, and respond to human-like text.
+- An LLM is a ⭐neural network⭐ designed to understand, generate, and respond to human-like text.
 - Models like this often have tens or even hundreds of billions of parameters, which are the adjustable weights in the network that are optimized during training to predict the next word in a sequence.
 - The “large” in “large language model” refers to both the model’s size in terms of parameters and the immense dataset on which it’s trained.
 - Think of `parameters` as the number of knobs you can turn to adjust the model's behavior, and `training data` is like the vast library of books and articles the model reads to learn language patterns. 
@@ -39,27 +41,35 @@ to learn from data and perform tasks that typically require human intelligence.�
 </details>
 
 <details>
-<summary>🎯Q. Stages of buiding and using the LLMs </summary>
+<summary>🎯Q. Stages of building and using LLMs</summary>
 
-- The general process of creating an LLM includes `pretraining` and `fine-tuning`.
-- 🎯traditional machine learning vs pretraining and fine-tuning of LLMs🎯:
-  - In traditional `machine learning`, it uses `supervised learning`, where models are trained from scratch on a single, specific task using labeled data.
-  - In `pretraning` an LLM large `self-supervised` learning is used, where the model learns general language patterns from massive amounts of unlabeled text data. 
-  - In `fine-tuning` the LLMs it uses the `supervised learning on smaller, labeled datasets to adapt the model for specific tasks`.
+- The process of creating an LLM involves two main stages: `pretraining` and `fine-tuning`.
 
-  - The two most popular categories of fine-tuning LLMs are `instruction fine-tuning` and `classification fine-tuning`.
-    - In `instruction fine-tuning`, the labeled dataset consists of instruction and answer pairs, such as a query to translate a text accompanied by the correctly translated text. 
-    - In `classification fine-tuning`, the labeled dataset consists of texts and associated class labels—for example, emails associated with “spam” or “not spam” labels.
+### 🎯 Traditional Machine Learning vs. Pretraining and Fine-Tuning in LLMs:
+1. **Traditional Machine Learning**:
+   - Uses `supervised learning`, where models are trained from scratch for a specific task using labeled data.
+2. **LLM Pretraining**:
+   - Relies on `self-supervised learning`, where the model learns general language patterns from massive amounts of unlabeled text data.
+3. **LLM Fine-Tuning**:
+   - Applies `supervised learning` on smaller, labeled datasets to adapt the model for specific tasks.
+
+### Types of Fine-Tuning:
+- **Instruction Fine-Tuning**:
+  - Uses datasets with input-output pairs (e.g., questions and answers) to teach the model specific tasks.
+- **Classification Fine-Tuning**:
+  - Uses labeled datasets with text and class labels (e.g., emails labeled as “spam” or “not spam”).
+  - This approach is common for tasks like sentiment analysis or topic classification.
+
 </details>
 
 
 <details>
-<summary>🎯Q. Transformer architecture - key notes</summary>
+<summary>🎯Q. Overview of the transformer architecture - key notes</summary>
 
 - Most modern LLMs rely on the transformer architecture, which is a 💡`deep neural network architecture`💡 introduced in the 2017 paper “Attention Is All You Need”
 - To understand LLMs, we must understand the original transformer, which was developed for machine translation, translating English texts to German and French.
 - There are key two steps in the transformer architecture:
-  1. The `encoder` processes the input text and creates a numerical representation of it (Embeddings) which capture the contextual information of the input.
+  1. The `encoder` processes the input text and creates a numerical representation of it (Embeddings) ⭐which capture the contextual information of the input.⭐
   2. The `decoder` takes this representation initially convert literally word by word  and then goes through `self-attention` and then generates the final output text.
 - This image is simple initial depiction however many things goes inside which autor is about to explain in the next chapters.
 ![alt text](image-1.png)
@@ -118,8 +128,7 @@ encoder representations from transformers) and the various GPT models (short for
       - Example:
           - Token IDs: [101, 2009, 2021, 2006, 1996, 3007, 1012]
           - Token Embeddings: [[0.1, 0.2, ...], [0.3, 0.4, ...], ..., [0.5, 0.6, ...]]
-  4. `Positional Embeddings` - adding 
-      - positional information to token embeddings to capture word order.
+  4. `Positional Embeddings` - adding positional information to token embeddings to capture word order.
   5. `Input Embeddings` - combining `token embeddings` and `positional embeddings` to create input embeddings for the model.
   6. Finally this input embeddings are fed into the transformer model for further processing. (Chp 3 onwards)
 
@@ -179,7 +188,6 @@ attention mechanisms.
 
 
 # Chapter 4: Implementing a GPT model from scratch to generate text
-![alt text](image-13.png)
 
 <details>
 <summary>🎯Q.what is the meaning of "parameter" in GPT like LLM ?</summary>
@@ -199,11 +207,36 @@ attention mechanisms.
 <details>
 <summary>🎯Q.what is the transformer block ?</summary>
 
+- Transformer block actually is a combination of multiple layers and components that work together to process and understand sequential data, such as text.
 - A transformer block is a fundamental `building unit of the transformer architecture`, which is widely used in natural language processing (NLP) tasks, including large language models (LLMs) like GPT.
 - A transformer block typically consists of two main components:
   1. `Multi-Head Self-Attention Mechanism`: This component allows the model to focus on different parts of the input sequence when making predictions. It computes attention scores for each token in the sequence relative to all other tokens, enabling the model to capture context and relationships effectively.
   2. `Feed-Forward Neural Network`: This component processes the output of the self-attention mechanism, applying a series of transformations to enhance the model's ability to learn complex patterns.
 - ![alt text](image-16.png)
+</details>
+
+
+<details>
+<summary>🎯Q. Summary of the chap 4 ?</summary>
+
+- summary ![alt text](image-17.png)
+</details>
+
+
+
+<br>
+<br>
+<br>
+
+# Chapter 5: pretraining on unlabeled text data.
+
+- chapter covers, basic model evaluation techniques, loading pretrained weights for good start for our model for fine tuning, and generating text with pretrained models.
+- ![alt text](image-18.png)
+
+<details>
+<summary>🎯Q. what is weight parameter ?</summary>
+
+- ![alt text](image-19.png)
 </details>
 
 
@@ -254,6 +287,13 @@ LLMs, such as those provided by ChatGPT or GPT-4. This is because custom models 
 - ![alt text](image-11.png)
 - ![alt text](image-12.png)
 
+</details>
+
+
+<details>
+<summary>🎯Q. how does training looks before foundation model and after foundation model ? good high level diagram </summary>
+
+- ![alt text](image-20.png)
 </details>
 
 <br>
