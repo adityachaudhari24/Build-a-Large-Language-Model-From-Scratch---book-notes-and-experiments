@@ -17,7 +17,7 @@ The models you’ll create are smaller in scale compared to the large foundation
   - Focused on pattern recognition and categorization but struggled with nuanced, complex tasks.
 - **Key Difference**: LLMs, powered by `transformers` and `large datasets`, represent a paradigm shift. They are versatile and capable of handling complex language understanding and generation tasks.
 
-⭐ **Takeaway**: Transformers and massive datasets have revolutionized NLP, making it more flexible and powerful. ⭐
+⭐ **Takeaway**: Transformers and massive datasets have revolutionized NLP, making it more flexible and powerful.
 </details>
 
 
@@ -25,6 +25,7 @@ The models you’ll create are smaller in scale compared to the large foundation
 <summary>🎯Q. What is an LLM </summary>
 
 - An LLM is a ⭐neural network⭐ designed to understand, generate, and respond to human-like text.
+- when LLM can generate the text which appear coherant and contextually relevant they does not possess human-like `consciousness` or `comprehension`.
 - Models like this often have tens or even hundreds of billions of parameters, which are the adjustable weights in the network that are optimized during training to predict the next word in a sequence.
 - The “large” in “large language model” refers to both the model’s size in terms of parameters and the immense dataset on which it’s trained.
 - Think of `parameters` as the number of knobs you can turn to adjust the model's behavior, and `training data` is like the vast library of books and articles the model reads to learn language patterns. 
@@ -41,9 +42,21 @@ to learn from data and perform tasks that typically require human intelligence.�
 </details>
 
 <details>
+
+- ⭐Research has shown that when it comes to modeling performance, custom-built LLMs—those tailored for specific tasks or domains—can outperform general-purpose LLMs⭐
+
 <summary>🎯Q. Stages of building and using LLMs</summary>
 
 - The process of creating an LLM involves two main stages: `pretraining` and `fine-tuning`.
+- `Pretraining` involves training the model on large amounts of unlabeled text data to learn general language patterns (this is then usually referred to as a foundational model). Fine-tuning involves adapting the pretrained model to specific tasks using smaller, labeled datasets.
+- ![alt text](image-21.png)
+
+
+
+</details>
+
+<details>
+<summary>🎯Q.Traditional Machine Learning vs. Pretraining and Fine-Tuning in LLMs ? <summary>
 
 ### 🎯 Traditional Machine Learning vs. Pretraining and Fine-Tuning in LLMs:
 1. **Traditional Machine Learning**:
@@ -71,11 +84,13 @@ to learn from data and perform tasks that typically require human intelligence.�
 - There are key two steps in the transformer architecture:
   1. The `encoder` processes the input text and creates a numerical representation of it (Embeddings) ⭐which capture the contextual information of the input.⭐
   2. The `decoder` takes this representation initially convert literally word by word  and then goes through `self-attention` and then generates the final output text.
+- Both the encoder and decoder consist of many layers connected by a so-called self-attention mechanism
 - This image is simple initial depiction however many things goes inside which autor is about to explain in the next chapters.
 ![alt text](image-1.png)
 
 - After this paper on this concept other variants transformer emerged and become backbone of many LLMs. Like BERT (short for bidirectional
 encoder representations from transformers) and the various GPT models (short for generative pretrained transformers)
+- ![alt text](image-22.png)
 </details>
 
 <details>
@@ -85,8 +100,12 @@ encoder representations from transformers) and the various GPT models (short for
 - The model is simply trained to preduct the next --> word in a sequence of words.
 - Compared to the original transformer architecture we covered in section 1.4, the general GPT architecture is relatively simple. Essentially, it’s just the decoder part without the encoder.
 - Since decoder-style models like GPT generate text by predicting text one word at a time, they are considered a type of `autoregressive model`.
-- `Autoregressive models` incorporate their previous outputs as inputs for future predictions.
+- To be `autoregressive` means that a model uses it's own past outputs or data points as inputs to predict future values in a sequence.
 - The ability to perform tasks that the model wasn’t explicitly trained to perform is called an `emergent behavior`. This capability isn’t explicitly taught during training but emerges as a natural consequence of the model’s exposure to vast quantities of multilingual data in diverse contexts.
+
+- GPT models are trained on relatively simple tasks which is predicting the next word in a sequence.
+- The next-word prediction task in GPT models is a type of self-supervised learning where the model uses the next word in a sentence as the label to predict. This approach eliminates the need for manually labeled data and allows training on massive unlabeled text datasets.
+- GPT models are trained on simple objectives like predicting the next word in a sequence. Despite this, their large size and diverse training data enable them to perform tasks like translation, summarization, and question answering without task-specific training. Additionally, they exhibit emergent behaviors, allowing them to handle tasks they weren't explicitly trained for.
 
 </details>
 
@@ -103,11 +122,11 @@ encoder representations from transformers) and the various GPT models (short for
 # Chapter 2: working with text data
 
 <details>
-<summary>🎯Q. understanding embeddings</summary>
+<summary>🎯Q. what is embeddings means?</summary>
 
-- The concept of converting data into a vector format is often referred to as embedding.
-- It’s important to note that different data formats require distinct embedding models. For example, an embedding model designed for text would not be suitable for embedding audio or video data.
-- ⭐The primary purpose of embeddings is to convert nonnumeric data into a format that neural networks can process.⭐
+ - The concept of `converting data into a vector format` is often referred to as `embedding`.
+ - It’s important to note that `different data formats require distinct embedding models`. For example, an embedding model designed for text would not be suitable for embedding audio or video data.
+ - ⭐The primary purpose of embeddings is to convert non-numeric data into a format that neural networks can process.⭐ very intresting very intresting
 
 </details>
 
@@ -132,6 +151,52 @@ encoder representations from transformers) and the various GPT models (short for
   5. `Input Embeddings` - combining `token embeddings` and `positional embeddings` to create input embeddings for the model.
   6. Finally this input embeddings are fed into the transformer model for further processing. (Chp 3 onwards)
 
+</details>
+
+
+<details>
+<summary>🎯Q. how tools like tiktokenizer able to tokenize the unknown words? very intresting</summary>
+
+- Tiktokenizer uses a technique called **subword tokenization** to handle unknown words. This approach breaks down words into smaller, more manageable pieces (subwords) that are part of the model's vocabulary. For example, the word "tokenization" might be split into "token" and "ization," allowing the model to understand and process it even if it hasn't seen the entire word before. (read the @embeddings.ipynb file for more details).
+
+- There are tokenization libraries like `Byte Pair Encoding (BPE)` and `WordPiece` which has fixed size of vocabulary and uses subword tokenization to handle unknown words effectively.
+Example : 
+  - Input: "unhappiness"
+  - Subword Tokens: ["un", "happi", "ness"]
+  - Token IDs: [5001, 3002, 4003]
+- Total size of vocabulary is fixed but using subword tokenization we can handle unknown words effectively.
+- below is the tentative size of vocab 
+- ![alt text](image-23.png)
+- Having this vocabulary size is a trade-off between model complexity and performance. A larger vocabulary can capture more nuances of language but requires more memory and computational resources. Conversely, a smaller vocabulary is more efficient but may struggle with rare or complex words.
+- To be able to breakdown different known and unknown words into such defined vocabulary is such a brilliant technique which actually a kind of its own language which is similar to human language but not exactly the same.
+</details>
+
+<details>
+<summary>🎯Q. what is sliding window appraoch in training data? </summary>
+
+- When training language models, the sliding window approach is used to create overlapping sequences of text from a larger corpus. This technique helps the model learn context and relationships between words more effectively.
+- For example, consider the sentence: "The cat sat on the mat." If we use a sliding window of size 4, we would create the following sequences:
+  - "The cat sat on"
+  - "cat sat on the"
+  - "sat on the mat"
+- When training language models, the sliding window approach is used to create overlapping sequences of text from a larger corpus. This technique helps the model learn context and relationships between words more effectively.
+- For example, consider the sentence: "The cat sat on the mat." If we use a sliding window of size 4, we would create the following sequences:
+  - "The cat sat on"
+  - "cat sat on the"
+  - "sat on the mat"
+- Each sequence overlaps with the previous one, allowing the model to see how words relate to each other in different contexts.
+- This approach is particularly useful for training models on long texts, as it ensures that the model is exposed to a variety of word combinations and contexts, improving its ability to generate coherent and contextually relevant text.
+- for code refer @embeddings.ipynb file
+</details>
+
+
+<details>
+<summary>🎯Q. what is DataSet and DataLoader in pytorch </summary>
+
+- In PyTorch, `Dataset` and `DataLoader` are two essential components used for handling and loading data efficiently during the training of machine learning models.
+- DataSet is an abstract class representing a dataset. It provides a way to access and manipulate the data. You can create a custom dataset by subclassing the `Dataset` class and implementing the `__len__` and `__getitem__` methods.
+  - `__len__`: Returns the total number of samples in the dataset.
+  - `__getitem__`: Retrieves a sample from the dataset at a given index. It needs Source and Ta
 </details>
 
 <br>
@@ -306,8 +371,16 @@ LLMs, such as those provided by ChatGPT or GPT-4. This is because custom models 
 
 
 <details>
+<summary>🎯Q. what is neural network?</summary>
+
+- A neural network is a series of algorithms that endeavors to recognize underlying relationships in a set of data through a process that mimics the way the human brain operates.
+- Neural networks consist of `nodes` and `connections` between the nodes.
+</details>
+
+<details>
 <summary>🎯Q. what is tensor?</summary>
 
+- If you want a quick refresher on 2D and 3D vector concept, please check this excellent video : https://www.youtube.com/watch?v=fNk_zzaMoSs
 - Tensors represent a mathematical concept that generalizes vectors and matrices to potentially higher dimensions.
 - In other words, tensors are mathematical objects that can be characterized by their order (or rank), which provides the number of dimensions. For example, a scalar (just a number) is a tensor of rank 0, a vector is a tensor of rank 1, and a matrix is a tensor of rank 2
 - 🔥From a computational perspective, tensors serve as `data containers`🔥. For instance, they hold multidimensional data, where 🔥each dimension represents a different feature🔥.
