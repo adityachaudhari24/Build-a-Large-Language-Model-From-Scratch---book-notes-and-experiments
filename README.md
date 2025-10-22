@@ -56,7 +56,7 @@ to learn from data and perform tasks that typically require human intelligence.�
 </details>
 
 <details>
-<summary>🎯Q.Traditional Machine Learning vs. Pretraining and Fine-Tuning in LLMs ? <summary>
+<summary>🎯Q.Traditional Machine Learning vs. Pretraining and Fine-Tuning in LLMs ? </summary>
 
 ### 🎯 Traditional Machine Learning vs. Pretraining and Fine-Tuning in LLMs:
 1. **Traditional Machine Learning**:
@@ -197,6 +197,131 @@ Example :
 - DataSet is an abstract class representing a dataset. It provides a way to access and manipulate the data. You can create a custom dataset by subclassing the `Dataset` class and implementing the `__len__` and `__getitem__` methods.
   - `__len__`: Returns the total number of samples in the dataset.
   - `__getitem__`: Retrieves a sample from the dataset at a given index. It needs Source and Ta
+
+- DataLoader has values like batch_size, shuffle, num_workers, stride etc.
+- To understand more about the `DataSet` and `DataLoader`, there is test code available under @pytorch-learning/pytorch_basics.ipynb file. Please have a look. 
+- 
+</details>
+
+<details>
+<summary>🎯Q. what is backprapogation ? </summary>
+
+- before undertanding backpropogation please understand since the tokenization what all things happens.
+- Before understanding backpropagation, it’s essential to grasp the steps text data undergoes from tokenization to being fed into the model:
+
+### 1. Token IDs → 2. Vectors → 3. Backpropagation → 4. Vector-Space Representation
+
+---
+
+#### **1) Token IDs**
+- Start with raw text, e.g., the tiny corpus:  
+  `"I love cats. I love dogs. They hate fish."`
+
+- **Tokenization**: Split the text into tokens (words/punctuation):  
+  `I, love, cats, dogs, They, hate, fish.`
+
+- **Map tokens to integers (Token IDs)** using a vocabulary table:
+        ```
+        I → 0
+        love → 1
+        cats → 2
+        dogs → 3
+        They → 4
+        hate → 5
+        fish → 6 
+        ```
+
+- **Token IDs** are compact labels the model uses internally instead of strings.
+
+---
+
+#### **2) Turning Token IDs into Vectors (Embeddings)**
+- The model maintains an **embedding matrix** with one vector row per token ID.  
+Example (3-dimensional vectors):  
+        ```
+        ID Vector
+        0 [0.12, -0.45, 0.30] ← "I"
+        1 [0.05, 0.10, 0.27] ← "love"
+        2 [-0.40, 0.22, 0.11] ← "cats"
+        ```
+
+- 
+- **How vectors are produced**:  
+When the model sees token ID `1` ("love"), it looks up row `1` in the table and uses that vector as the numeric representation of the word.
+
+- **Why vectors?**  
+Continuous vectors allow the model to perform mathematical operations (e.g., dot products, linear transformations) to compute predictions.
+
+---
+
+#### **3) How Backpropagation is Used to Learn Vectors**
+- **Training Scenario**:  
+Task: "Given a word, predict the next word."  
+Example training pairs:  
+`(I → love), (love → cats), (love → dogs), (They → hate), (hate → fish)`
+
+- **One Training Step**:
+1. **Forward Pass**:  
+   - Input token ID (e.g., `love → 1`).  
+   - Look up its vector `v_love`.  
+   - Use the vector in the network to compute predictions for the next word (scores over the vocabulary).  
+   - Compute a **loss** (a single number) that measures how wrong the prediction is.
+
+2. **Backward Pass (Backpropagation)**:  
+   - Compute how much each parameter in the network contributed to the loss (including embedding vectors).  
+   - For `v_love`, backpropagation determines the direction and magnitude to adjust it so the model predicts the correct next word in the future.
+
+3. **Update**:  
+   - Adjust the embedding vector(s) by a small step in the computed direction (scaled by a learning rate).  
+   - Modern optimizers (e.g., Adam, SGD+momentum) refine these updates.
+
+- **Important Detail**:  
+  Only the embeddings of tokens present in the current training batch are updated in that step (sparse updates).
+
+---
+
+#### **4) Vector Space Representation (Before vs. After Training)**
+
+- **Before Training**:  
+  - Embeddings are random or small initial values.  
+  - Points in the vector space are scattered without semantic order.
+
+- **After Training**:  
+  - Words appearing in similar contexts move closer together in the vector space.  
+  - Example:  
+    - `love`, `cats`, and `dogs` cluster together because they co-occur.  
+    - `hate`, `fish`, and `dogs` might form a different cluster.
+
+- **Visualization**:  
+  Dimensionality reduction techniques (e.g., PCA, t-SNE) are often used to visualize high-dimensional embeddings in 2D or 3D.  
+  Example: `love` moves from a random spot to a position between `cats` and `dogs`.
+
+- ### **Short Summary / Cheat-Sheet**
+    - **Token IDs**: Labels for words (integers).  
+    - **Embedding Layer**: A table mapping token IDs → dense vectors (learnable parameters).  
+    - **One-Hot Equivalence**: Embedding lookup ≈ one-hot vector × weight matrix (done efficiently).  
+    - **Backpropagation**:  
+    - Compute gradients of loss w.r.t. each parameter (including embedding rows).  
+    - Update parameters to reduce loss.  
+    - **Effect of Training**:  
+    - Vectors adjust so words used in similar contexts cluster together in vector space.  
+    - Embeddings become useful features for the model.
+
+</details>
+
+<details>
+<summary>🎯Q. Is backprapogation and linear regression same or different ? </summary>
+
+- ![alt text](image-24.png)
+</details>
+
+
+<details>
+<summary>🎯Q. what does one hot encoding means ?</summary>
+
+- check https://github.com/rasbt/LLMs-from-scratch/blob/main/ch02/03_bonus_embedding-vs-matmul/embeddings-and-linear-layers.ipynb
+- ![alt text](image-25.png)
+- embeddings layer is one step ahead of one hot encoding, embeddings layer provides the vector representation directly by looking up the embedding matrix using token IDs, while one-hot encoding requires an additional matrix multiplication step to convert the one-hot vectors into dense representations.
 </details>
 
 <br>
