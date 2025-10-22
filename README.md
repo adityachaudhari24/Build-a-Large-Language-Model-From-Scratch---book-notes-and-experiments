@@ -174,19 +174,14 @@ Example :
 <details>
 <summary>🎯Q. what is sliding window appraoch in training data? </summary>
 
-- When training language models, the sliding window approach is used to create overlapping sequences of text from a larger corpus. This technique helps the model learn context and relationships between words more effectively.
-- For example, consider the sentence: "The cat sat on the mat." If we use a sliding window of size 4, we would create the following sequences:
-  - "The cat sat on"
-  - "cat sat on the"
-  - "sat on the mat"
-- When training language models, the sliding window approach is used to create overlapping sequences of text from a larger corpus. This technique helps the model learn context and relationships between words more effectively.
+- When training language models, the sliding window approach is used to create overlapping sequences of text from a larger corpus. `This technique helps the model learn context and relationships between words more effectively`.
 - For example, consider the sentence: "The cat sat on the mat." If we use a sliding window of size 4, we would create the following sequences:
   - "The cat sat on"
   - "cat sat on the"
   - "sat on the mat"
 - Each sequence overlaps with the previous one, allowing the model to see how words relate to each other in different contexts.
 - This approach is particularly useful for training models on long texts, as it ensures that the model is exposed to a variety of word combinations and contexts, improving its ability to generate coherent and contextually relevant text.
-- for code refer @embeddings.ipynb file
+- for code example refer @embeddings.ipynb file
 </details>
 
 
@@ -206,7 +201,6 @@ Example :
 <details>
 <summary>🎯Q. what is backprapogation ? </summary>
 
-- before undertanding backpropogation please understand since the tokenization what all things happens.
 - Before understanding backpropagation, it’s essential to grasp the steps text data undergoes from tokenization to being fed into the model:
 
 ### 1. Token IDs → 2. Vectors → 3. Backpropagation → 4. Vector-Space Representation
