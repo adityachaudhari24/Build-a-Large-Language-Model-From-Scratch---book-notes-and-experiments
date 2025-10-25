@@ -318,6 +318,33 @@ Example training pairs:
 - embeddings layer is one step ahead of one hot encoding, embeddings layer provides the vector representation directly by looking up the embedding matrix using token IDs, while one-hot encoding requires an additional matrix multiplication step to convert the one-hot vectors into dense representations.
 </details>
 
+<details>
+<summary>🎯Q. what is positional encoding ? why its necessary after having token embeddings</summary>
+
+- When we convert tokens to embeddings (like in earlier sections), each token gets represented as a vector — e.g., “I”, “love”, “cats” → each a dense numeric vector.
+- For example:
+    - “Cats chase dogs.”
+    - “Dogs chase cats.”
+  - Both sentences have the same words, but different meanings — order matters.
+
+- However, the embedding vectors themselves don’t contain any information about the order of the words. The model just sees a bag of vectors without knowing which came first.
+- To give the model a sense of word order, we add **positional encodings** to the token embeddings. These encodings are vectors that represent the position of each token in the sequence.
+- so for each token : 
+  - Input to Transformer = WordEmbedding + PositionalEmbedding
+  - This way, the model gets both:
+      - semantic meaning (from word embeddings)
+      - ordering context (from positional embeddings)
+- There are two types of positional encodings:
+  1. **relative Positional Embeddings**: The model learns a unique vector for each position during training.
+      - Instead of focusing on the absolute position of a token, the emphasis of relative positional embeddings is on the relative position or distance between tokens. This means the model learns the relationships in terms of “how far apart” rather than “at which exact position.” The advantage here is that the model can generalize better to sequences
+of varying lengths, even if it hasn’t seen such lengths during training
+  2. **Absolute Positional Encodings**: Absolute positional embeddings are directly associated with specific positions in a sequence.
+      - ![alt text](image-26.png)
+  - OpenAI’s GPT models use absolute positional embeddings that are optimized during the training process rather than being fixed or predefined like the positional encodings in the original transformer model
+
+  - ![alt text](image-27.png)
+</details>
+
 <br>
 <br>
 <br>
@@ -327,6 +354,7 @@ Example training pairs:
 <details>
 <summary>🎯Q. why we need the attention mechanism in LLM ?</summary>
 
+- ![alt text](image-28.png)
 - The attention mechanism allows the model to focus on different parts of the input sequence when making predictions, rather than treating all parts equally.
 - This is especially important for handling long-range dependencies in text, where the meaning of a word can depend on words that are far apart in the sequence.
 - The attention mechanism helps the model to dynamically weigh the importance of different words in the input sequence based on their relevance to the current prediction task.
@@ -364,6 +392,14 @@ attention mechanisms.
 - All the steps along with test code is mentioned under @chp_03_self_attention_theory/self_attention.ipynb file. Please have a look. This is super interesting and the original author has explained it very well.
 - ![alt text](image-9.png)
 
+</details>
+
+<details>
+<summary>🎯Q. what does trainable weight mean actually ?</summary>
+
+- ![alt text](image-29.png)
+- ![alt text](image-30.png)
+- ![alt text](image-32.png)
 </details>
 
 <br>
@@ -528,9 +564,10 @@ LLMs, such as those provided by ChatGPT or GPT-4. This is because custom models 
 <details>
 <summary>🎯Q. Why positional encoding is needed even after token IDs encodings into vectors? chp 2 section 2.8 </summary>
 
-- TODO
 </details>
 
+- what is dimensions in vector calculations? means 256 dimension vector? 128 dimension vector? how to visualize it? why its neededed?
+ 
 
 
 <br>
