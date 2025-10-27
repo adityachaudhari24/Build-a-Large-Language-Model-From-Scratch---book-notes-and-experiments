@@ -376,10 +376,11 @@ attention mechanisms.
 - Self-attention is a mechanism that allows each position in the input sequence to consider the relevancy of, or “attend to,” all other positions in the same sequence when computing the representation of a sequence.
 - Self-attention is a key component of contemporary LLMs based on the transformer architecture, such as the GPT series.
 - The `self-attention mechanism` enables the model to weigh the importance of different words in a sequence relative to each other, allowing it to capture context and relationships more effectively.
-- In `self-attention`, the `“self”` refers to the mechanism’s ability to compute attention weights by relating different positions within a single input sequence.
+- In `self-attention`, the `“self”` refers to the mechanism’s ability to compute `attention weights` by relating different positions within a single input sequence.
 - It assesses and learns the relationships and dependencies between various parts of the input itself, such as words in a sentence or pixels in an image.
 - This is in contrast to traditional attention mechanisms, where the focus is on the relationships between elements of two different sequences.
 - ⭐⭐In the context of self-attention mechanisms, the dot product determines the extent to which each element in a sequence focuses on, or “attends to,” any other element: the higher the dot product, the higher the similarity and attention score between two elements.⭐⭐
+- Beyond viewing the dot product operation as a mathematical tool that combines two vectors to yield a scalar value, the dot product is a `measure of similarity because it quantifies how closely two vectors are aligned`: a higher dot product indicates a greater degree of alignment or similarity between the vectors. In the context of self-attention mechanisms, the dot product determines the extent to which each element in a sequence focuses on, or “attends to,” any other element: the higher the dot product, the higher the similarity and attention score between two elements.
 </details>
 
 <details>
@@ -401,6 +402,34 @@ attention mechanisms.
 - ![alt text](image-30.png)
 - ![alt text](image-32.png)
 </details>
+
+
+<details>
+<summary>🎯Q. Difference between Weight parameters vs. attention weights  ?</summary>
+
+- ![alt text](image-36.png)
+- ![alt text](image-35.png)
+- ![alt text](image-37.png)
+</details>
+
+
+<details>
+<summary>🎯Q. why self-attention also referred as a scaled-dot product ?</summary>
+
+- ![alt text](image-33.png)
+</details>
+
+<details>
+<summary>🎯Q. Why query, key, and value in attention mechanisms ?</summary>
+
+- ![alt text](image-34.png)
+- ![alt text](image-38.png)
+</details>
+
+
+- ⭐⭐⭐ `Self-attention` involves the trainable weight matrices `Wq, Wk, and Wv`. These matrices `transform input data into queries, keys, and values`, respectively, which are crucial components of the attention mechanism.⭐⭐⭐
+
+
 
 <br>
 <br>
