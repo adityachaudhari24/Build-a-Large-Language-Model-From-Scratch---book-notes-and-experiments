@@ -399,8 +399,8 @@ attention mechanisms.
 <summary>🎯Q. what does trainable weight mean actually ?</summary>
 
 - ![alt text](image-29.png)
-- ![alt text](image-39.png)
 - ![alt text](image-30.png)
+- ![alt text](image-39.png)
 - ![alt text](image-32.png)
 </details>
 
