@@ -431,6 +431,32 @@ attention mechanisms.
 - ⭐⭐⭐ `Self-attention` involves the trainable weight matrices `Wq, Wk, and Wv`. These matrices `transform input data into queries, keys, and values`, respectively, which are crucial components of the attention mechanism.⭐⭐⭐
 
 
+<details>
+<summary>🎯Q. What is casual attention and why its needed and how its done?</summary>
+
+- ![alt text](image-40.png)
+- ![alt text](image-41.png)
+- ![alt text](image-42.png)
+</details>
+
+<details>
+<summary>🎯Q. What is the concept of dropout and why its important?</summary>
+
+- Dropout on attention weights helps the model stay flexible — it learns to understand context from multiple cues, not just the strongest ones.
+- ![alt text](image-43.png)
+- ![alt text](image-44.png)
+</details>
+
+<details>
+<summary>🎯Q. What is multi-head attention and why its needed?</summary>
+
+- Multi-head attention is like having several independent attention layers — each specializing in a different type of relationship — that together form a complete, context-rich understanding of a sequence.
+- ![alt text](image-45.png)
+- ![alt text](image-46.png)
+- ![alt text](image-47.png)
+- ![alt text](image-48.png)
+- ![alt text](image-49.png)
+</details>
 
 <br>
 <br>
